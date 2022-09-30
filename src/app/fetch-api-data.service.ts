@@ -9,7 +9,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'https://priyas-moviessite.netlify.app/';
+const apiUrl = 'https://yourmoviescollection.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root',
@@ -80,7 +80,7 @@ export class FetchApiDataService {
   getDirector(director: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(`${apiUrl}movies/director/${director}`, {
+      .get(`${apiUrl}movies/directors/${director}`, {
         headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -94,7 +94,7 @@ export class FetchApiDataService {
   getGenre(genre: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(`${apiUrl}movies/Genre/${genre}`, {
+      .get(`${apiUrl}movies/genre/${genre}`, {
         headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
