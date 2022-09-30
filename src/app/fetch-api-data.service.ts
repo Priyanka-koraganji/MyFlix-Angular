@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://priyas-moviessite.netlify.app/';
 
@@ -39,24 +40,6 @@ export class FetchApiDataService {
     return this.http
       .post(apiUrl + 'login', userDetails)
       .pipe(catchError(this.handleError));
-  }
-
-  /**
-   * handles errors
-   * @param error
-   * @returns error message
-   */
-  private handleError(error: HttpErrorResponse): any {
-    if (error.error instanceof ErrorEvent) {
-      console.log('Some error occured:', error.error.message);
-    } else {
-      console.log(
-        `Error Status code ${error.status}, ` + `Error Body is: ${error.error}`
-      );
-    }
-    return throwError(
-      () => new Error('Something bad happened; please try gagin later.')
-    );
   }
 
   /**
@@ -217,5 +200,23 @@ export class FetchApiDataService {
   private extractResponseData(res: any): any {
     const body = res;
     return body || {};
+  }
+
+  /**
+   * handles errors
+   * @param error
+   * @returns error message
+   */
+  private handleError(error: HttpErrorResponse): any {
+    if (error.error instanceof ErrorEvent) {
+      console.log('Some error occured:', error.error.message);
+    } else {
+      console.log(
+        `Error Status code ${error.status}, ` + `Error Body is: ${error.error}`
+      );
+    }
+    return throwError(
+      () => new Error('Something bad happened; please try gagin later.')
+    );
   }
 }
