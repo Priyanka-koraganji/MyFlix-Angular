@@ -27,7 +27,7 @@ $boxShadowColor: #e9ecef;
 }
 
 .mat-card-header {
-  height: 80px;
+  height: 90px;
   display: flex;
   align-items: center;
   color: $textColor;
@@ -42,9 +42,9 @@ $boxShadowColor: #e9ecef;
 }
 
 img {
-  width: 250px;
-  height: 350px;
-  object-fit: contain;
+  width: 85%;
+  height: 30vh;
+  object-fit: fill;
 }
 
 .mat-icon-button {
